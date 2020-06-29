@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!--titulo de cada pagina-->
+        {% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <div id="logotipo">
+            <!--Logo-->
+        </div>
+        <h1>ERP</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+            {% for page in pages %}
+                <li>
+                    <a href="{% url 'page' page.2 %}">{{ page.1 }}</a>
+                </li>
+            {% endfor %}
+            
+        </ul>
+    </nav>
+    <hr>
+    <div id="content">
+        {% block content %}
+            <!--Codigo que viene de templates-->
+        {% endblock %}
+    </div>
+    <footer>
+        Summitvi {% now "Y" %} &copy; todos los derechos reservados - Politica de privacidad
+    </footer>
+</body>
+</html>

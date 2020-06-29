@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        <!--titulo de cada pagina-->
+        {% endblock %}
+    </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <div id="logotipo">
+            <!--Logo-->
+        </div>
+        <h1>Sitio web con Django</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Inicio</a>
+            </li>
+            <li>
+                <a href="{% url 'create_article' %}">Crear articulo</a>
+            </li>
+            <li>
+                <a href="{% url 'create_full_article' %}">Crear articulo (form)</a>
+            </li>
+            <li>
+                <a href="{% url 'hola-mundo' %}">Hola Mundo</a>
+            </li>
+            <li>
+                <a href="{% url 'pagina' %}">Pagina de pruebas</a>
+            </li>
+            <li>
+                <a href="{% url 'contacto' %}">Contacto</a>
+            </li>
+        </ul>
+    </nav>
+    <hr>
+    <div id="content">
+        {% block content %}
+            <!--Codigo que viene de templates-->
+        {% endblock %}
+    </div>
+    <footer>
+        Summitvi {% now "Y" %} &copy; todos los derechos reservados - Politica de privacidad
+    </footer>
+</body>
+</html>
